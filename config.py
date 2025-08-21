@@ -1,26 +1,34 @@
-# -*- coding:utf-8 -*-
-__author__ = 'Threedog'
-__Date__ = '2018/6/4 11:16'
+# coding: utf-8
+"""Configuration for Auto-Lianliankan.
+All parameters can be hot reloaded at runtime.
+"""
 
-# 窗体标题  用于定位游戏窗体
-WINDOW_TITLE = "PictureMatching3"
-# 时间间隔  间隔多少秒连一次
-TIME_INTERVAL = 0.5
-# 游戏区域距离顶点的长度
-MARGIN_LEFT = 100
-# 游戏区域距离顶点的高度
-MARGIN_HEIGHT = 100
-# 横向的方块数量
-H_NUM = 11
-# 纵向的方块数量
-V_NUM = 6
-# 方块宽度
-SQUARE_WIDTH = 65
-# 方块高度
-SQUARE_HEIGHT = 65
-# 切片处理时候的左上、右下坐标：
-# 注意  这里要么保证是21*25，要么，如果不是（比如四个数据是10,10,50,50；也就是40*40像素），name就把empty.png图片替换成对应大小的一张图片（比如40*40），图片可以没用，但程序中不能
-SUB_LT_X = 5
-SUB_LT_Y = 5
-SUB_RB_X = 26
-SUB_RB_Y = 30
+# ROI (region of interest) of the board: x, y, width, height
+ROI = (0, 0, 0, 0)
+# Force re-select ROI on start
+ROI_RESET = False
+# Save ROI back to this file after selection
+SAVE_ROI_BACK_TO_CONFIG = True
+
+# Target detection + clustering parameters
+MIN_AREA = 400        # minimum area of a tile
+MAX_AREA = 4000       # maximum area of a tile
+ASPECT_TOL = 0.3      # allowed aspect ratio difference from square
+NMS_DIST = 10         # suppress detections closer than this (pixels)
+CROP_RATIO = 0.1      # crop percent from each side before comparison
+SSIM_THR = 0.95       # similarity threshold for grouping tiles
+
+# Click parameters
+CLICK_OFFSET_X = 0
+CLICK_OFFSET_Y = -8   # click above the center to avoid shadow
+CLICK_DELAY_MS = 50
+LOOP_SLEEP_MS = 200
+
+# Hotkeys
+PAUSE_HOTKEY = 'f12'
+EXIT_HOTKEY = 'esc'
+RELOAD_HOTKEY = 'enter'
+
+# Behaviour
+DEBUG = True          # show debug visualization
+
